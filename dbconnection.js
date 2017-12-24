@@ -1,10 +1,8 @@
 var mysql=require('mysql');
-var cnn=mysql.createPool({
-
-host:'localhost',
-user:'root',
-password:'',
-database:'medsky'
-
+var connection=mysql.createPool({
+    host:'localhost',
+    user:'root',
+    password:'',
+    database:'medsky'
 });
-module.exports=cnn;
+module.exports=connection;
