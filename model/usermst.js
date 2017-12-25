@@ -22,7 +22,7 @@ var user={
         console.log(res);
     },
     UpdateUser:function(id,usr,callback){
-        return db.query('update user_mst set usr_name=?,usr_mno=?,usr_pass=? where pk_usr_email_id=?',[usr.usr_name,usr.usr_mno,usr.usr_pass,usr.usr_gen,usr.usr_pro_pic,usr.usr_verify,usr.usr_token,usr.usr_type,usr.pk_usr_email_id],callback);
+        return db.query('update user_mst set usr_name=?,usr_mno=?,usr_pass=? where pk_usr_email_id=?',[usr.usr_name,usr.usr_mno,usr.usr_pass,id],callback);
         //return db.query('update task set Title=?,Status=? where Id=?',[t.Title,t.Status,t.Id],callback);
     },
     deleteUser:function(id,callback)
@@ -43,8 +43,18 @@ var user={
             msg="invalid";
             return msg;
         }
+    },
+    login:function(usr,callback)
+    {
+        console.log(usr.pk_usr_email_id);
+        console.log(usr.usr_pass);
+        //console.log("select * from user_mst where pk_usr_email_id=? and usr_pass=?",usr.pk_usr_email_id,usr.usr_pass);
+        return db.query("select * from user_mst where pk_usr_email_id=? and usr_pass=?",[usr.pk_usr_email_id,usr.usr_pass],callback);
+        
+    },
+    sign_up:function(usr,callback){
+        return db.query('insert into user_mst values(?,?,?)',[usr.pk_usr_email_id,usr.usr_pass,usr.usr_mno],callback);
     }
-    
 
 }
 module.exports=user;
