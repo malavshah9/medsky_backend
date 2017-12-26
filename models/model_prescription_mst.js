@@ -1,10 +1,15 @@
 var db=require('../dbconnection');
 var prescription={
     get_prescription_by_uid:function(uid,callback){
-        return db.query("select * from prescription_mst where fk_usr_email_id=?",[uid],callback);
+        //return db.query("select  p.*,distinct d.doc_name from prescription_mst p,doctor_mst d where p.fk_usr_email_id=? and p.fk_doc_email_id=d.pk_doc_email_id",[uid],callback);
+        return db.query("select DISTINCT p.fk_doc_email_id, d.doc_name from prescription_mst p,doctor_mst d where p.fk_usr_email_id=? and p.fk_doc_email_id=d.pk_doc_email_id ORDER BY p.pres_date DESC",[uid],callback);
     },
     get_prescription_by_uid_and_did:function(uid,did,callback){
-        return db.query("select * from prescription_mst where fk_usr_email_id=? and fk_doc_email_id=?",[uid,did],callback);
+      //  return db.query("select * from prescription_mst where fk_usr_email_id=? and fk_doc_email_id=?",[uid,did],callback);
+      
+     
+      return db.query(" select  pres_date from prescription_mst where fk_usr_email_id=? and fk_doc_email_id=? ORDER BY pres_date DESC",[uid,did],callback)
+
     },
     get_all_prescription:function(callback)
     {
