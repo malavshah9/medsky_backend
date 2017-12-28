@@ -16,7 +16,7 @@ var user={
         //return db.query('insert into user_mst values(?,?,?,?,?,?,?,?,?,?)',[null,u.pk_usr_email_id,u.usr_name,u.usr_mno,u.usr_pass,null,null,null,null,null],callback)
         //console.log('usr_sr_no,usr_name');
     },*/
-    adduser:function(usr,callback)
+    signup:function(usr,callback)
     {
         var res= db.query('insert into user_mst values(?,?,?,?,?,?,?,?,?,?)',[usr.usr_sr_no,usr.pk_usr_email_id,usr.usr_name,usr.usr_mno,usr.usr_pass,usr.usr_gen,usr.usr_pro_pic,usr.usr_verify,usr.usr_token,usr.usr_type],callback);
         console.log(res);
@@ -29,10 +29,10 @@ var user={
     {
         return db.query('delete from user_mst where pk_usr_email_id=?',[id],callback);
     },
-    changepass:function(usr,callback)
+   /* changepass:function(usr,callback)
     {
         var msg='';
-        var result=db.query('select * from user_mst where pk_usr_email_id=? ans usr_pss=?',[usr.pk_usr_email_id,usr.usr_pass],callback);
+        var result=db.query('select * from user_mst where pk_usr_email_id=? ans usr_pass=?',[usr.pk_usr_email_id,usr.usr_pass],callback);
         if(result!='')
         {
             msg=done;
@@ -43,18 +43,17 @@ var user={
             msg="invalid";
             return msg;
         }
-    },
+    },*/
     login:function(usr,callback)
     {
         console.log(usr.pk_usr_email_id);
         console.log(usr.usr_pass);
         //console.log("select * from user_mst where pk_usr_email_id=? and usr_pass=?",usr.pk_usr_email_id,usr.usr_pass);
-        return db.query("select * from user_mst where pk_usr_email_id=? and usr_pass=?",[usr.pk_usr_email_id,usr.usr_pass],callback);
+       // return db.query('select * from user_mst where pk_usr_email_id=? and usr_pass=?',[usr.pk_usr_email_id,usr.usr_pass],callback);
+        
+       return db.query('select * from user_mst where pk_usr_email_id=? and usr_pass=?',[usr.pk_usr_email_id,usr.usr_pass],callback);
         
     },
-    sign_up:function(usr,callback){
-        return db.query('insert into user_mst values(?,?,?)',[usr.pk_usr_email_id,usr.usr_pass,usr.usr_mno],callback);
-    }
-
+  
 }
 module.exports=user;

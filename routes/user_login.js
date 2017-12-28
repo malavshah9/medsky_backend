@@ -2,6 +2,22 @@ var express = require('express');
 var router = express.Router();
 var user=require('../model/usermst');
 
+
+
+/*router.post('/',function(req,res,next){
+
+        user.user_login(req.body,function(err,rows){
+
+            if(err){
+                res.json(err);
+            }
+            else{
+                res.json(rows);
+            }
+        });
+});*/
+
+
 router.post('/',function(req,res,next){
 
         user.login(req.body,function(err,rows){
@@ -11,16 +27,30 @@ router.post('/',function(req,res,next){
             }
             else{
               
-                    console.log("success");
-                res.json(req.body);
+                res.json(rows);
+                   /* if(count==[])
+                    {
+                        alert("wrong");
+                    }
+                    else
+                    {console.log(req.body);
+                    res.json(req.body);
+                    }*/
             }
             
         });
 });
 router.get('/',function(req,res,next){
 
-    user.getalluser(function(err,rows){
-        res.json(rows);
+    user.getAlluser(function(err,rows){
+        if(err)
+        {
+            res.json(err);
+        }
+        else
+        {
+            res.json(rows);
+        }
     });
 
 });

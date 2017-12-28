@@ -4,15 +4,15 @@ var user=require('../model/usermst');
 
 router.post('/',function(req,res,next){
 
-        user.sign_up(req.body,function(err,rows){
+    user.signup(req.body,function(err,rows){
 
-            if(err){
-                res.json(err);
-            }
-            else{
-                res.json(rows);
-            }
-        });
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(req.body);
+        }
+    });
 });
 
 module.exports=router;
