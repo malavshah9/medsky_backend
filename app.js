@@ -7,18 +7,18 @@ var bodyParser = require('body-parser');
 var cors=require('cors');
 var index = require('./routes/index');
 var users = require('./routes/users');
-<<<<<<< HEAD
+//<<<<<<< HEAD
 var data = require('./routes/usertbl');
 var logg =require('./routes/user_login');
 var sign=require('./routes/user_signup');
 
-=======
+//=======
 var presc=require('./routes/routes_prescription_mst');
 var doc=require('./routes/routes_doctos');
 var med=require('./routes/routes_medicines');
 var presc2=require('./routes/routes2_prescription_mst');
 var medicines=require('./routes/routes_medicines2');
->>>>>>> eba09921db8a52583a1eba96ce4e3b80977e6c4e
+//>>>>>>> eba09921db8a52583a1eba96ce4e3b80977e6c4e
 var app = express();
 
 // view engine setup
@@ -41,6 +41,8 @@ app.use('/prescription2',presc2);
 app.use('/doctor',doc);
 app.use('/medicines',med);
 app.use('/med',medicines);
+app.use('/login',logg);
+app.use('/signup',sign);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
