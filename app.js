@@ -15,6 +15,7 @@ var sign=require('./routes/user_signup');
 //=======
 var presc=require('./routes/routes_prescription_mst');
 var doc=require('./routes/routes_doctos');
+var blogs=require('./routes/blog_tbl');
 var med=require('./routes/routes_medicines');
 var presc2=require('./routes/routes2_prescription_mst');
 var medicines=require('./routes/routes_medicines2');
@@ -42,6 +43,7 @@ app.use('/doctor',doc);
 app.use('/medicines',med);
 app.use('/med',medicines);
 app.use('/login',logg);
+app.use('/blog',blogs);
 app.use('/signup',sign);
 
 // catch 404 and forward to error handler
