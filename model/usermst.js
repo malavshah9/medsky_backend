@@ -1,4 +1,6 @@
 var db=require('../dbconnection');
+var email=require("emailjs/email");
+
 var user={
     getAlluser:function(callback){
         return db.query('select * from user_mst',callback);
@@ -29,25 +31,51 @@ var user={
     {
         return db.query('delete from user_mst where pk_usr_email_id=?',[id],callback);
     },
-   /* changepass:function(usr,callback)
+   changepass:function(usr,callback)
     {
-        var msg='';
-        var result=db.query('select * from user_mst where pk_usr_email_id=? ans usr_pass=?',[usr.pk_usr_email_id,usr.usr_pass],callback);
-        if(result!='')
-        {
-            msg=done;
-            return msg;
-        }
-        else
-        {
-            msg="invalid";
-            return msg;
-        }
-    },*/
+       // var msg='';
+        //return result=db.query('select * from user_mst where pk_usr_email_id=? ans usr_pass=?',[usr.pk_usr_email_id,usr.usr_pass],callback);
+        //console.log(result);
+        //if(result==1)
+        //{
+          //  msg="done";
+           // return msg;
+            return result= db.query('update user_mst set usr_pass=? where pk_usr_email_id=?',[usr.usr_pass,usr.pk_usr_email_id],callback);
+            
+        //}
+        //else
+        //{
+          //  msg="invalid";
+            //return msg;
+       // }
+    },
     login:function(usr,callback)
     {
     return db.query('select * from user_mst where pk_usr_email_id=? and usr_pass=?',[usr.pk_usr_email_id,usr.usr_pass],callback);
     },
-  
-}
+    
+   sendMail:function(demo,callback){
+    
+    var server  = email.server.connect({
+       user:    "medskyy@gmail.com",
+       password:"jainamshah007", 
+       host:    "smtp.gmail.com", 
+       ssl:     true,
+       port:465
+    });
+    
+    server.send({
+       text:    demo.message,
+       from:    "medskyy@gmail.com", 
+       to:      demo.name,
+       subject: demo.subject
+    }, callback);
+    },
+    getpass:function(id,callback)
+    {
+        return db.query('select usr_pass=? from user_mst where pk_usr_email_id=?',[usr.usr_pass,id],callback);
+    }
+    
+    
+    }
 module.exports=user;

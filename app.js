@@ -19,10 +19,20 @@ var blogs=require('./routes/blog_tbl');
 var med=require('./routes/routes_medicines');
 var presc2=require('./routes/routes2_prescription_mst');
 var medicines=require('./routes/routes_medicines2');
+<<<<<<< HEAD
 var likes=require('./routes/blog_like');
 var likeEmail= require('./routes/likeEmail');
+=======
+var forget=require('./routes/mail');
+var passchange=require('./routes/changepass');
+var rem=require('./routes/routes_reminder');
+
+//var forget=require('./routes/forgetpass');
+//eba09921db8a52583a1eba96ce4e3b80977e6c4e
+>>>>>>> 834bbaeb80e84b2ca018ea7ecba8e578c0a95707
 
 //>>>>>>> eba09921db8a52583a1eba96ce4e3b80977e6c4e
+
 var app = express();
 
 // view engine setup
@@ -48,8 +58,14 @@ app.use('/med',medicines);
 app.use('/login',logg);
 app.use('/blog',blogs);
 app.use('/signup',sign);
+<<<<<<< HEAD
 app.use('/blog_likes',likes);
 app.use('/likeEmail',likeEmail);
+=======
+app.use('/forget',forget);
+app.use('/rem',rem);
+//app.use('/reminder',reminder);
+>>>>>>> 834bbaeb80e84b2ca018ea7ecba8e578c0a95707
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

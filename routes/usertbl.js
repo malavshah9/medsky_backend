@@ -66,7 +66,7 @@ router.delete('/:id',function(req,res,next)
         
        });
  });
- router.post('/',function(req,res,next){
+ /*router.post('/',function(req,res,next){
 
     user.changepass(req.body,function(err,rows){
 
@@ -77,7 +77,7 @@ router.delete('/:id',function(req,res,next)
             res.json(req.body);
         }
     });
-});
+});*/
 
 
 
