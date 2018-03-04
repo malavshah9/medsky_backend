@@ -19,6 +19,9 @@ var blogs=require('./routes/blog_tbl');
 var med=require('./routes/routes_medicines');
 var presc2=require('./routes/routes2_prescription_mst');
 var medicines=require('./routes/routes_medicines2');
+var likes=require('./routes/blog_like');
+var likeEmail= require('./routes/likeEmail');
+
 //>>>>>>> eba09921db8a52583a1eba96ce4e3b80977e6c4e
 var app = express();
 
@@ -45,6 +48,8 @@ app.use('/med',medicines);
 app.use('/login',logg);
 app.use('/blog',blogs);
 app.use('/signup',sign);
+app.use('/blog_likes',likes);
+app.use('/likeEmail',likeEmail);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
