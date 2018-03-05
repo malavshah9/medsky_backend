@@ -21,10 +21,10 @@ var user={
     signup:function(usr,callback)
     {
         var res= db.query('insert into user_mst values(?,?,?,?,?,?,?,?,?,?)',[usr.usr_sr_no,usr.pk_usr_email_id,usr.usr_name,usr.usr_mno,usr.usr_pass,usr.usr_gen,usr.usr_pro_pic,usr.usr_verify,usr.usr_token,usr.usr_type],callback);
-       
+       return res;
     },
     UpdateUser:function(id,usr,callback){
-        return db.query('update user_mst set usr_name=?,usr_mno=?,usr_pass=? where pk_usr_email_id=?',[usr.usr_name,usr.usr_mno,usr.usr_pass,id],callback);
+        return db.query('update user_mst set usr_name=?,usr_mno=?,usr_pass=?,usr_gen=? where pk_usr_email_id=?',[usr.usr_name,usr.usr_mno,usr.usr_pass,usr.usr_gen,id],callback);
         //return db.query('update task set Title=?,Status=? where Id=?',[t.Title,t.Status,t.Id],callback);
     },
     deleteUser:function(id,callback)
@@ -74,6 +74,10 @@ var user={
     getpass:function(id,callback)
     {
         return db.query('select usr_pass=? from user_mst where pk_usr_email_id=?',[usr.usr_pass,id],callback);
+    },
+    addetails:function(id,callback)
+    {
+       return db.query('insert into user_mst values(?,?,?,?,?,?,?,?,?,?)',[usr.usr_sr_no,usr.pk_usr_email_id,usr.usr_name,usr.usr_mno,usr.usr_pass,usr.usr_gen,usr.usr_pro_pic,usr.usr_verify,usr.usr_token,usr.usr_type],callback);
     }
     
     
