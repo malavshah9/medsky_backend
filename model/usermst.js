@@ -40,7 +40,7 @@ var user={
         //{
           //  msg="done";
            // return msg;
-            return result= db.query('update user_mst set usr_pass=? where pk_usr_email_id=?',[usr.usr_pass,usr.pk_usr_email_id],callback);
+            return db.query('update user_mst set usr_pass=? where pk_usr_email_id=?',[usr.usr_pass,usr.pk_usr_email_id],callback);
             
         //}
         //else
